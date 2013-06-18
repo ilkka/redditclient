@@ -7,7 +7,12 @@ angular.module('RedditClientApp')
       'AngularJS',
       'Karma'
     ];
+    console.log('Now calling geoloc');
     geolocation.getCurrentPosition(function(position) {
+      console.log('Geoloc got back to us');
       $scope.position = position;
+    }, function(err) {
+      console.log('Geoloc error: '+err.code+' '+err.message);
     });
+    console.log('Called geoloc');
   });

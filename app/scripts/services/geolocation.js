@@ -6,7 +6,9 @@ angular.module('RedditClientApp')
     // Public API here
     return {
       getCurrentPosition: cordovaReady(function(onSuccess, onError, options) {
+        console.log('actual geoloc being called');
         navigator.geolocation.getCurrentPosition(function() {
+          console.log('geoloc onSuccess');
           var that = this,
             args = arguments;
           if (onSuccess) {
@@ -15,6 +17,7 @@ angular.module('RedditClientApp')
             });
           }
         }, function() {
+          console.log('geoloc onError');
           var that = this,
             args = arguments;
           if (onError) {
