@@ -16,5 +16,5 @@ angular.module('RedditClientApp')
       return function() {
         return impl.apply(this, arguments);
       };
-    }
+    };
   });
