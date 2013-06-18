@@ -208,7 +208,7 @@
     self.settings = delegate.settings;
 
     // And the start folder/page.
-    self.wwwFolderName = @"dist";
+    self.wwwFolderName = @"app";
     self.startPage = delegate.startPage;
     if (self.startPage == nil) {
         self.startPage = @"index.html";
