@@ -2,15 +2,19 @@
 
 angular.module('RedditClientApp')
   .factory('cordovaReady', function () {
-    // Service logic
-    // ...
-
-    var meaningOfLife = 42;
-
-    // Public API here
-    return {
-      someMethod: function () {
-        return meaningOfLife;
-      }
-    };
+    return function(fn) {
+      var queue = [];
+      var impl = function() {
+        queue.push(Array.prototype.slice.call(arguments));
+      };
+      document.addEventListener('deviceReady', function() {
+        queue.forEach(function(args) {
+          fn.apply(this, args);
+        });
+        impl = fn;
+      }, false);
+      return function() {
+        return impl.apply(this, arguments);
+      };
+    }
   });
