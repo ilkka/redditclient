@@ -5,7 +5,7 @@ angular.module('RedditClientApp')
   .factory('geolocation', function ($rootScope, cordovaReady) {
     // Public API here
     return {
-      getCurrentPosition: function(onSuccess, onError, options) {
+      getCurrentPosition: cordovaReady(function(onSuccess, onError, options) {
         navigator.geolocation.getCurrentPosition(function() {
           var that = this,
             args = arguments;
@@ -23,6 +23,6 @@ angular.module('RedditClientApp')
             });
           }
         }, options);
-      }
+      })
     };
   });
