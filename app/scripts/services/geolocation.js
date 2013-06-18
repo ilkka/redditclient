@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('RedditClientApp')
-  .factory('gelocation', function ($rootScope, cordovaReady) {
+  .factory('geolocation', function ($rootScope, cordovaReady) {
     // Public API here
     return {
       getCurrentPosition: function(onSuccess, onError, options) {
